@@ -77,8 +77,7 @@ model.summary()
 
 # Create indicator (0 or 1) for expected recovery amount >= $1000
 df['indicator_1000'] = np.where(df['expected_recovery_amount']<1000, 0, 1)
-era_900_1100 = df.loc[(df['expected_recovery_amount']<1100) & 
-                      (df['expected_recovery_amount']>=900)]
+era_900_1100 = df.loc[(df['expected_recovery_amount']<1100) & (df['expected_recovery_amount']>=900)]
 
 # Define X and y
 X = era_900_1100['expected_recovery_amount']
@@ -92,8 +91,7 @@ model = sm.OLS(y,X).fit()
 model.summary()
 
 # Redefine era_950_1050 so the indicator variable is included
-era_950_1050 = df.loc[(df['expected_recovery_amount']<1050) & 
-                      (df['expected_recovery_amount']>=950)]
+era_950_1050 = df.loc[(df['expected_recovery_amount']<1050) & (df['expected_recovery_amount']>=950)]
 
 # Define X and y 
 X = era_950_1050[['expected_recovery_amount','indicator_1000']]
